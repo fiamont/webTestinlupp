@@ -34,26 +34,30 @@ public class webTestSVTPlay {
         searchBox.sendKeys("Bäst i test");
         System.out.println(searchBox.getAttribute("value"));
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
+        //driver.manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
         Thread.sleep(1*1000);
 
         searchBox.sendKeys(Keys.RETURN);
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(2000));
+        //driver.manage().timeouts().implicitlyWait(Duration.ofMillis(2000));
         Thread.sleep(2*1000);
 
         WebElement firstSearchResult = driver.findElement(By.tagName("em"));
 
         firstSearchResult.click();
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(2000));
+        //driver.manage().timeouts().implicitlyWait(Duration.ofMillis(2000));
         Thread.sleep(2*1000);
+
+        String pWithText = driver.findElement(By.className("jmUUdw")).getText();
+        System.out.println(pWithText);
+
+        Thread.sleep(3*1000);
 
         WebElement playVideo = driver.findElement(By.className("hSZGAr"));
 
         playVideo.click();
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(10000));
         Thread.sleep(10*1000);
 
         driver.quit();
