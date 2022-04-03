@@ -22,44 +22,35 @@ public class webTestSVTPlay {
         WebDriver driver;
         driver = new ChromeDriver();
 
+        //open up SVT Play and print out title and url in terminal, pause for 2 sec
         driver.get("https://svtplay.se");
-
         System.out.println(driver.getTitle());
         System.out.println(driver.getCurrentUrl());
-
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(2000));
         Thread.sleep(2*1000);
 
+        //find search-box, write a text, print text in terminal
         WebElement searchBox = driver.findElement(By.name("q"));
         searchBox.sendKeys("Bäst i test");
         System.out.println(searchBox.getAttribute("value"));
-
-        //driver.manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
         Thread.sleep(1*1000);
 
+        //press return-key
         searchBox.sendKeys(Keys.RETURN);
-
-        //driver.manage().timeouts().implicitlyWait(Duration.ofMillis(2000));
         Thread.sleep(2*1000);
 
+        //click on first search-result
         WebElement firstSearchResult = driver.findElement(By.tagName("em"));
-
         firstSearchResult.click();
-
-        //driver.manage().timeouts().implicitlyWait(Duration.ofMillis(2000));
         Thread.sleep(2*1000);
 
+        //get videodesciption-text, print out in terminal, play the video
         String pWithText = driver.findElement(By.className("jmUUdw")).getText();
         System.out.println(pWithText);
-
         Thread.sleep(3*1000);
-
         WebElement playVideo = driver.findElement(By.className("hSZGAr"));
-
         playVideo.click();
-
         Thread.sleep(10*1000);
-
         driver.quit();
     }
 }
